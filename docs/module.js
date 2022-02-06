@@ -44,10 +44,10 @@ const showMap = async (texts) => {
     ].includes(v.name)) voice = v
   }
 
-  const DELTA_DISTANCE = 100
   const DELTA_BEARING = 15
   const DELTA_PITCH = 5
   const DELTA_Z = 0.4
+  const DELTA_PAN = 120
   
   let easing = t => {
     return t * (2 - t)
@@ -60,10 +60,10 @@ const showMap = async (texts) => {
       e => {
         // e.preventDefault()
         switch (e.which) {
-          case 87: // w
+          case 83: // s 
             map.zoomTo(map.getZoom() - DELTA_Z, { easing: easing })
             break
-          case 83: // s
+          case 68: // d
             map.zoomTo(map.getZoom() + DELTA_Z, { easing: easing })
             break
           case 65: // a
@@ -71,16 +71,28 @@ const showMap = async (texts) => {
               map.getBearing() - DELTA_BEARING, { easing: easing }
             )
             break
-          case 68: // d
+          case 70: // f
             map.rotateTo(
               map.getBearing() + DELTA_BEARING, { eaasing: easing }
             )
             break
-          case 81: // q
+          case 186: // ;
             map.setPitch(map.getPitch() + DELTA_PITCH)
             break
-          case 90: // z
+          case 71: // g
             map.setPitch(map.getPitch() - DELTA_PITCH)
+            break
+          case 72: // h
+            map.panBy([- DELTA_PAN, 0], { easing: easing })
+            break
+          case 74: // j
+            map.panBy([0, DELTA_PAN], { easing: easing })
+            break
+          case 75: // k
+            map.panBy([0, - DELTA_PAN], { easing: easing })
+            break
+          case 76: // l
+            map.panBy([DELTA_PAN, 0], { easing: easing })
             break
         }
       }

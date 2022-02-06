@@ -41,8 +41,8 @@
       "tiles": [
         "https://x.optgeo.org/ise/zxy/{z}/{x}/{y}.pbf"
       ],
-      "minzoom": 9,
-      "maxzoom": 17,
+      "minzoom": 5,
+      "maxzoom": 16,
       "attribution": "地理院"
     }
   },
